@@ -39,9 +39,7 @@ for zipcodes_three, zipcodes_four in zip(results_zipcodes_three, results_zipcode
 # The TotalWages column where state = PA
 print('The TotalWages column where state = PA:')
 cursor = db.cursor()
-cursor.execute("SELECT TotalWages FROM zipcodes_one.zipcodes_one WHERE state = 'PA' ORDER BY TotalWages ASC;")
+cursor.execute("SELECT TotalWages FROM zipcodes_one.zipcodes_one WHERE State = 'PA' ORDER BY TotalWages ASC;")
 results_zipcodes_five = cursor.fetchall()
-cursor.execute("SELECT TotalWages FROM zipcodes_two.zipcodes_two WHERE state = 'PA' ORDER BY TotalWages ASC;")
-results_zipcodes_six = cursor.fetchall()
-for zipcodes_five, zipcodes_six in zip(results_zipcodes_five, results_zipcodes_six):
-    print(zipcodes_five[0], zipcodes_six[0])
+for result in results:
+    print(result)
