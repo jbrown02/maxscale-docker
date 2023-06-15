@@ -73,6 +73,12 @@ The main.py script executes a series of 4 SQL queries:
 3. All zipcodes between 40000 and 41000 
 4. The TotalWages column where state = PA (Pennsylvania)
 
+You can run the script with the command:
+
+```
+sudo python3 main.py
+```
+
 The output should look like this:
 
 ```
@@ -121,6 +127,15 @@ Once complete, to remove the cluster and MaxScale containers:
 ```
 sudo docker-compose down -v
 ```
+
+### Troubleshooting
+If you run main.py and the process hangs, kill it and confirm the IP address of the MaxScale instance with the command:
+
+```
+sudo docker inspect maxscale-maxscale-1
+```
+
+The Docker instance gets assigned a new IP address on startup, and so the process will hang if the IP address in the Python file doesn't match the Docker instance IP. Take the IP provided and insert it into the main.py file. The script should run properly after this.
 
 ## MaxScale Docker Compose Setup
 To properly set up MaxScale Docker Compose, first navigate to the proper directory or create a new one (ensure that you have full rights to modify the directory). Next, clone the Git repository containing all of the needed files and file associations with the command:
