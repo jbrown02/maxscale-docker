@@ -28,13 +28,16 @@ sudo docker-compose exec maxscale maxctrl list servers
 ```
 
 The output should look like this:
+
+```
 ┌─────────┬──────────┬──────┬─────────────┬─────────────────┬──────┬─────────────────┐                                                                    
 │ Server  │ Address  │ Port │ Connections │ State           │ GTID │ Monitor         │                                                                    
 ├─────────┼──────────┼──────┼─────────────┼─────────────────┼──────┼─────────────────┤                                                                    
 │ server1 │ primary1 │ 3306 │ 0           │ Master, Running │      │ MariaDB-Monitor │
 ├─────────┼──────────┼──────┼─────────────┼─────────────────┼──────┼─────────────────┤                                                                    
 │ server2 │ primary2 │ 3306 │ 0           │ Running         │      │ MariaDB-Monitor │
-└─────────┴──────────┴──────┴─────────────┴─────────────────┴──────┴─────────────────┘
+└─────────┴──────────┴──────┴─────────────┴─────────────────┴──────┴─────────────────┘  
+```
 
 The  database can be accessed with the following credentials:
 
