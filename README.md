@@ -2,6 +2,9 @@
 
 This Docker image runs the latest 2.4 version of MariaDB MaxScale.
 
+## Introduction
+This project will enable the user to access a sharded MySql database of zipcodes and perform SQL queries to interact with their data. It utilizes an instance of MaxScale Docker to run the servers, and MariaDB to interact with the databases. In addition, the main.py script included in the maxscale-docker/maxscale directory will output the information required when run.
+
 ## Configuration
 The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.d/example.cnf file:
 
@@ -59,7 +62,60 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]>
 ```
 
-You can now enter SQL queries in the terminal to interact with the database. To exit the database, simply "exit". Once complete, to remove the cluster and MaxScale containers:
+You can now enter SQL queries in the terminal to interact with the database. To exit the database, simply type "exit".
+
+### Running the Script
+The main.py script executes a series of 4 SQL queries:
+
+1. The largest zipcode in zipcodes_one
+2. All zipcodes where state = KY (Kentucky)
+3. All zipcodes between 40000 and 41000 
+4. The TotalWages column where state = PA (Pennsylvania)
+
+The output should look like this:
+
+```
+The largest zipcode in zipcodes_one:
+(47750,)
+All zipcodes where state = KY:
+40003 40022
+40004 40023
+40006 40025
+40007 40026
+40008 40027
+40009 40031
+40010 40032
+40011 40033
+40012 40036
+40013 40037
+(etc.)
+All zipcodes between 40000 and 41000:
+40003 40022
+40004 40023
+40006 40025
+40007 40026
+40008 40027
+40009 40031
+40010 40032
+40011 40033
+40012 40036
+40013 40037
+(etc.)
+The TotalWages column where state = PA:
+330884386 
+33137755 
+331848277 
+332596067 
+33272489 
+33341723 
+333541869 
+333547254 
+333739234 
+33407100 
+(etc.)
+```
+
+Once complete, to remove the cluster and MaxScale containers:
 
 ```
 sudo docker-compose down -v
