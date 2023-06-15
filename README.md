@@ -15,7 +15,7 @@ The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.
    sudo nano example.cnf
    ```
    
-3. Modify the configuration options as needed. Refer to the MaxScale documentation for help, as it describes how to configure MariaDB MaxScale and presents some possible usage scenarios. Make sure your server names and types match those designated in the docker-compose.yml file
+3. Modify the configuration options as needed. Refer to the MaxScale documentation for help, as it describes how to configure MariaDB MaxScale and presents some possible usage scenarios. Make sure your server names and types match those designated in the docker-compose.yml file also located in the maxscale-docker/maxscale directory.
 
 ## Running
 [The MaxScale docker-compose setup](./maxscale/docker-compose.yml) contains MaxScale configured with two primary nodes. To start it, make sure you're in the maxscale-docker/maxscale directory and run the following command:
