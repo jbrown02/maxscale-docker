@@ -3,7 +3,7 @@
 This Docker image runs the latest 2.4 version of MariaDB MaxScale.
 
 ## Introduction
-This project will enable the user to access a sharded MySql database of zipcodes and perform SQL queries to interact with their data. It utilizes an instance of MaxScale Docker to run the servers, and MariaDB to interact with the databases. In addition, the main.py script included in the maxscale-docker/maxscale directory will output the information required when run.
+This project will enable the user to access a sharded MySql database of zipcodes and perform SQL queries to interact with their data. It utilizes an instance of MaxScale Docker to run the servers, and MariaDB to interact with the databases. In addition, the main.py script included in the maxscale-docker/maxscale directory will output the information required of this project upon running.
 
 ## Configuration
 The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.d/example.cnf file:
