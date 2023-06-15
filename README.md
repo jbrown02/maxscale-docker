@@ -45,9 +45,10 @@ The output should look like this:
 The  database can be accessed with the following credentials:
 
 Username: maxuser
+
 Password: maxpwd
 
-Below is the command that includes these credentials and the resulting terminnal output:
+Below is the command that includes these credentials and the resulting terminal output:
 
 ```
 sudo mysql -umaxuser -pmaxpwd -h 127.0.0.1 -P 4000
