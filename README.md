@@ -3,7 +3,7 @@
 This Docker image runs the latest 2.4 version of MariaDB MaxScale.
 
 ## Configuration
-The MariaDB MaxScale Docker image can be cconfigured by editing the maxscale.cnf.d/example.cnf file:
+The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.d/example.cnf file:
 
 1. Locate the maxscale.cnf.d/example.cnf file. It will be in the directory that you cloned the main Git repository to.
 2. Open the file in a text editor with:
