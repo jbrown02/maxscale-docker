@@ -9,7 +9,7 @@ This project will enable the user to access a sharded MySQL database of zipcodes
 You can run the following command to install MaxScale on your VM:
 
 ```
-curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
+sudo curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
 ```
 
 This assumes that you already have curl and ca-certificates packages installed on the system. The install commands for these packages are:
