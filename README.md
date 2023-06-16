@@ -55,7 +55,7 @@ type=listener
 service=Sharded-Service
 protocol=MariaDBClient
 port=4000
-
+```
 
 ## Running
 [The MaxScale docker-compose setup](./maxscale/docker-compose.yml) contains MaxScale configured with two primary nodes. To start it, make sure you're in the maxscale-docker/maxscale directory and run the following command:
