@@ -22,7 +22,7 @@ sudo apt-get install ca-certificates -y
 When this is done, you should be able to start configuring your MaxScale container.
 
 ## MaxScale Docker Compose Setup
-To properly set up MaxScale Docker Compose, first navigate to the proper directory or create a new one (ensure that you have full rights to modify the directory). Next, clone the Git repository containing all of the needed files and file associations. In this case, I used the following commands:
+To properly set up MaxScale Docker Compose, first navigate to the proper directory or create a new one (ensure that you have full rights to modify the directory). Next, clone the Git repository containing all of the needed files and file associations. In this case, I used the example directory "sharddb" with the following commands:
 
 ```
 cd
