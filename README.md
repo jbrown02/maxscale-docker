@@ -3,7 +3,46 @@
 This Docker image runs the latest 2.4 version of MariaDB MaxScale.
 
 ## Introduction
-This project will enable the user to access a sharded MySql database of zipcodes and perform SQL queries to interact with their data. It utilizes an instance of MaxScale Docker to run the servers, and MariaDB to interact with the databases. In addition, the main.py script included in the maxscale-docker/maxscale directory will output the information required of this project upon running.
+This project will enable the user to access a sharded MySQL database of zipcodes and perform SQL queries to interact with their data. It utilizes an instance of MaxScale Docker to run the servers, and MariaDB to interact with the databases. In addition, the main.py script included in the maxscale-docker/maxscale directory will output the information required of this project upon running.
+
+## Installation
+You can run the following command to install MaxScale on your VM:
+
+```
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash
+```
+
+This assumes that you already have curl and ca-certificates packages installed on the system. The install commands for these packages are:
+
+```
+sudo apt-get install curl
+sudo apt-get install ca-certificates -y
+```
+
+When this is done, you should be able to start configuring your MaxScale container.
+
+## MaxScale Docker Compose Setup
+To properly set up MaxScale Docker Compose, first navigate to the proper directory or create a new one (ensure that you have full rights to modify the directory). Next, clone the Git repository containing all of the needed files and file associations with the command:
+
+```
+git clone https://github.com/jbrown02/maxscale-docker/
+```
+
+This should enable you to accurately recreate the appropriate MaxScale environment on your device.
+
+### Configuration
+
+The [default configuration](maxscale/maxscale.cnf) for the container is minimal
+and only enables the REST API.
+
+The REST API by default listens on port 8989. Accessing it from the docker host requires a port mapping specified on container startup. The example below shows general information via curl:
+
+```
+sudo docker run -d -p 8989:8989 --name mxs mariadb/maxscale:latest
+sudo curl -u admin:mariadb http://localhost:8989/v1/maxscale
+```
+
+See [MaxScale documentation](https://github.com/mariadb-corporation/MaxScale/blob/2.4/Documentation/REST-API/API.md) for more information about the REST API.
 
 ## Configuration
 The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.d/example.cnf file:
@@ -42,7 +81,7 @@ The output should look like this:
 └─────────┴──────────┴──────┴─────────────┴─────────────────┴──────┴─────────────────┘  
 ```
 
-The  database can be accessed with the following credentials:
+The database can be accessed with the following credentials:
 
 Username: maxuser
 
@@ -136,26 +175,3 @@ sudo docker inspect maxscale-maxscale-1
 ```
 
 The Docker instance gets assigned a new IP address on startup, and so the process will hang if the IP address in the Python file doesn't match the Docker instance IP. Take the IP provided and insert it into the main.py file. The script should run properly after this.
-
-## MaxScale Docker Compose Setup
-To properly set up MaxScale Docker Compose, first navigate to the proper directory or create a new one (ensure that you have full rights to modify the directory). Next, clone the Git repository containing all of the needed files and file associations with the command:
-
-```
-git clone https://github.com/jbrown02/maxscale-docker/
-```
-
-This should enable you to accurately recreate the appropriate MaxScale environment on your device.
-
-### Configuration
-
-The [default configuration](maxscale/maxscale.cnf) for the container is minimal
-and only enables the REST API.
-
-The REST API by default listens on port 8989. Accessing it from the docker host requires a port mapping specified on container startup. The example below shows general information via curl:
-
-```
-sudo docker run -d -p 8989:8989 --name mxs mariadb/maxscale:latest
-sudo curl -u admin:mariadb http://localhost:8989/v1/maxscale
-```
-
-See [MaxScale documentation](https://github.com/mariadb-corporation/MaxScale/blob/2.4/Documentation/REST-API/API.md) for more information about the REST API.
