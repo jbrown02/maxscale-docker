@@ -30,20 +30,6 @@ git clone https://github.com/jbrown02/maxscale-docker/
 
 This should enable you to accurately recreate the appropriate MaxScale environment on your device.
 
-### Configuration
-
-The [default configuration](maxscale/maxscale.cnf) for the container is minimal
-and only enables the REST API.
-
-The REST API by default listens on port 8989. Accessing it from the docker host requires a port mapping specified on container startup. The example below shows general information via curl:
-
-```
-sudo docker run -d -p 8989:8989 --name mxs mariadb/maxscale:latest
-sudo curl -u admin:mariadb http://localhost:8989/v1/maxscale
-```
-
-See [MaxScale documentation](https://github.com/mariadb-corporation/MaxScale/blob/2.4/Documentation/REST-API/API.md) for more information about the REST API.
-
 ## Configuration
 The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.d/example.cnf file:
 
@@ -54,7 +40,22 @@ The MariaDB MaxScale Docker image can be configured by editing the maxscale.cnf.
    sudo nano example.cnf
    ```
    
-3. Modify the configuration options as needed. Refer to the MaxScale documentation for help, as it describes how to configure MariaDB MaxScale and presents some possible usage scenarios. Make sure your server names and types match those designated in the docker-compose.yml file also located in the maxscale-docker/maxscale directory.
+3. Modify the configuration options, referring to the MaxScale documentation for help as needed. We will need a setup of two primary servers instead of a one master, two slave cluster. Make sure your server names and types match those designated in the docker-compose.yml file also located in the maxscale-docker/maxscale directory. The following edits will need to be made to the MaxScale configuration file manually (sudo nano example.cnf). You should add the following blocks under the "MariaDB-Monitor" section:
+
+```
+[Sharded-Service]
+type=service
+router=schemarouter
+servers=server1,server2
+user=maxuser
+password=maxpwd
+
+[Sharded-Service-Listener]
+type=listener
+service=Sharded-Service
+protocol=MariaDBClient
+port=4000
+
 
 ## Running
 [The MaxScale docker-compose setup](./maxscale/docker-compose.yml) contains MaxScale configured with two primary nodes. To start it, make sure you're in the maxscale-docker/maxscale directory and run the following command:
