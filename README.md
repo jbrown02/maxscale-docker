@@ -1,4 +1,4 @@
-# MariaDB MaxScale Docker image
+# MariaDB MaxScale Docker Image
 
 This Docker image runs the latest 2.4 version of MariaDB MaxScale.
 
